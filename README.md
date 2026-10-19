@@ -18,7 +18,7 @@
 4. Выполни **Build > Build Bundle(s) / APK(s) > Build APK(s)**.
 5. APK появится в `app/build/outputs/apk/debug/app-debug.apk`.
 
-Через терминал с Android SDK: `gradle assembleDebug`.
+Через терминал с Android SDK и установленным Gradle: `gradle assembleDebug`.
 
 ## Настройка DeepSeek
 1. Получи API-ключ в официальной консоли DeepSeek.
