@@ -115,7 +115,7 @@ private fun Agent008App(store: LocalStore) {
                                     try {
                                         val context = selected?.text?.takeIf { it.isNotBlank() }?.let { "\n\nТекст активного проекта:\n" + it.takeLast(12000) }.orEmpty()
                                         val system = "Ты Agent008, личный литературный помощник писателя. Отвечай по-русски, если пользователь не просит иначе. Пиши прозу, анализируй сюжет, редактируй стиль и объясняй правки. Не выдумывай факты канона: отмечай предположения."
-                                        val messages = listOf("system" to system) + chat.takeLast(12) + listOf("user" to (userText + context))
+                                        val messages = listOf("system" to system) + chat.takeLast(12).mapIndexed { index, item -> if (index == chat.takeLast(12).lastIndex && item.first == "user") item.first to (item.second + context) else item }
                                         val answer = client.complete(store.apiKey(), messages)
                                         chat = chat + ("assistant" to answer)
                                     } catch (e: Exception) {
